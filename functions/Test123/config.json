@@ -1,0 +1,15 @@
+{
+    "name": "Test123",
+    "event": "No Event",
+    "description": "Test123",
+    "input": {
+        "headers": [],
+        "payload": {}
+    },
+    "environmentVariables": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}

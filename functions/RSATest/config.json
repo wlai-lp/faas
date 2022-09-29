@@ -1,0 +1,15 @@
+{
+    "name": "RSATest",
+    "event": "No Event",
+    "description": "test-RSA",
+    "input": {
+        "headers": [],
+        "payload": {}
+    },
+    "environmentVariables": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}
