@@ -53,7 +53,21 @@ Run Attach FaaS Debugger from the launch.json.
 The debugger will start and pause at the auto-generated code.
 Use IntelliJ debugger to navigate through your code.
 
-
-
 # Tips
+
 - you can set config.json and invoke the deployed version in the cloud with local config.json
+- use `console.info("debug message");` it will be part of the result payload
+
+```
+{
+    "result": "Hello Worldundefined",
+    "logs": [
+        {
+            "level": "Info",
+            "message": "debug message",
+            "extras": [],
+            "timestamp": 1664568751806
+        }
+    ]
+}
+```

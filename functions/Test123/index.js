@@ -1,4 +1,4 @@
-function lambda(input, callback) {
+async function lambda(input, callback) {
   const { Toolbelt, LpServices } = require("lp-faas-toolbelt");
   const httpClient = Toolbelt.HTTPClient();
   const lpClient = Toolbelt.LpClient();
@@ -11,5 +11,8 @@ function lambda(input, callback) {
   let secretCache = {};
   const cars = ["Saab", "Volvo", "BMW"];
 
-  callback(null, `Hello World` + caseEndpoint);
+  let secretValue = await secretClient.readSecret("secret_key");
+
+  console.info("debug message " + secretValue.value);
+  callback(null, `Hello World` + secretValue.value);
 }
