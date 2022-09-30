@@ -2,37 +2,28 @@ function lambda(input, callback) {
   const crypto = require("crypto");
   const fs = require("fs");
 
-  const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
-    // The standard secure default length for RSA keys is 2048 bits
-    modulusLength: 2048,
-  });
-
-  // *********************************************************************
-  //
-  // To export the public key and write it to file:
-
-  const exportedPublicKeyBuffer = publicKey.export({
-    type: "pkcs1",
-    format: "pem",
-  });
-  fs.writeFileSync("public.pem", exportedPublicKeyBuffer, {
+  const encryptedData = fs.readFileSync("encrypted_data.txt", {
     encoding: "utf-8",
   });
-  // *********************************************************************
+  const privateKey = fs.readFileSync("private.pem", { encoding: "utf-8" });
 
-  // *********************************************************************
-  //
-  // To export the private key and write it to file
+  //console.info("test123");
 
-  const exportedPrivateKeyBuffer = privateKey.export({
-    type: "pkcs1",
-    format: "pem",
-  });
-  fs.writeFileSync("private.pem", exportedPrivateKeyBuffer, {
+  const decryptedData = crypto.privateDecrypt(
+    {
+      key: privateKey,
+      // In order to decrypt the data, we need to specify the
+      // same hashing function and padding scheme that we used to
+      // encrypt the data in the previous step
+      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+      oaepHash: "sha256",
+    },
+    Buffer.from(encryptedData, "base64")
+  );
+
+  fs.writeFileSync("decrypted_data.txt", decryptedData.toString("utf-8"), {
     encoding: "utf-8",
   });
-
-  // *********************************************************************
 
   callback(null, `Hello World`);
 }

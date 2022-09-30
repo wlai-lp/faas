@@ -12,7 +12,7 @@
 
 or
 
-## > lpf login -a 123456789 -u user@liveperson.com -p p4ssw0rd
+## > lpf login -a 90412079 -u wlai@liveperson.com -p P@ssword3!
 
 # local developmernt
 
@@ -32,7 +32,7 @@ or
 
 ## TODO example
 
-# TO Debug in VSCcode
+# TO Debug in VSCcode (can't get it working)
 
 Preparation for Debugging
 It's necessary to run the lpf init command to initialize the project structure and to install all required packages for the local faas-toolbelt.
@@ -52,3 +52,8 @@ Open command palette -> Tasks: Run Task -> Debug Function
 Run Attach FaaS Debugger from the launch.json.
 The debugger will start and pause at the auto-generated code.
 Use IntelliJ debugger to navigate through your code.
+
+
+
+# Tips
+- you can set config.json and invoke the deployed version in the cloud with local config.json

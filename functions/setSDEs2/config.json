@@ -1,0 +1,15 @@
+{
+    "name": "setSDEs2",
+    "event": "No Event",
+    "description": "setSDEs2",
+    "input": {
+        "headers": [],
+        "payload": {}
+    },
+    "environmentVariables": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}
