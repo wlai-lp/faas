@@ -1,4 +1,6 @@
-function lambda(input, callback) {
+async function lambda(input, callback) {
+  const { Toolbelt } = require("lp-faas-toolbelt");
+  const secretClient = Toolbelt.SecretClient();
   const crypto = require("crypto");
   const fs = require("fs");
 
@@ -29,8 +31,11 @@ function lambda(input, callback) {
 
   // const privateKey = fs.readFileSync("my_file.pem", { encoding: "utf-8" });
   //console.info("test123");
-  console.info("encoded = " + encoded);
-  const privateKey = encoded;
+  // console.info("encoded = " + encoded);
+
+  let secretValue = await secretClient.readSecret("private_key");
+  console.info("secrete is " + secretValue.value);
+  const privateKey = Buffer.from(secretValue.value, "utf-8").toString();
   const decryptedData = crypto.privateDecrypt(
     {
       key: privateKey,
