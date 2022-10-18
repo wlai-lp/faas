@@ -36,6 +36,10 @@ async function lambda(input, callback) {
   let secretValue = await secretClient.readSecret("private_key");
   console.info("secrete is " + secretValue.value);
   const privateKey = Buffer.from(secretValue.value, "utf-8").toString();
+
+  const encryptedDataString =
+    "atIdX6lmoTt9mso6IRUl/3PC0O2+/IkF00oE5uV03m6zN5jdqXYdxlNBIk8tEc7i9pLsDz24atWEg27pdw1he/iRxqwiiU44BkuXOGbXdccCTaRihgde6YiOA5lJVgL7Qh9OGiFD4Eghe74OCn8q+Tml2B5DXCJk/f9Un+uqntWaU0hUIm26YCNpSo6THjlQesYV6VXtQtJmkL1viCAk1JELjqSa7SzYNMr4JSgWcmNk+8DwVtSX5kFzAV3xooV895nqAPqEyOgVm7Nc+mGGJ8GXxQ4a5CjVriTCZsMeAsK3kPne8X7zTb4JS1woyPPWJ/GOkRnKN6IE8gETB/LEiQ==";
+
   const decryptedData = crypto.privateDecrypt(
     {
       key: privateKey,
@@ -45,12 +49,16 @@ async function lambda(input, callback) {
       padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
       oaepHash: "sha256",
     },
-    Buffer.from(encryptedData, "base64")
+    // Buffer.from(encryptedData, "base64")
+    Buffer.from(encryptedDataString, "base64")
   );
 
   fs.writeFileSync("decrypted_data.txt", decryptedData.toString("utf-8"), {
     encoding: "utf-8",
   });
 
-  callback(null, `Hello World`);
+  const result = JSON.parse(decryptedData.toString("utf-8"));
+
+  // callback(null, `Hello World`);
+  callback(null, result);
 }

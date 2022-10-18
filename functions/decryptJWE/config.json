@@ -1,7 +1,7 @@
 {
-  "name": "RSATest",
+  "name": "decryptJWE",
   "event": "No Event",
-  "description": "test-RSA",
+  "description": "decryptJWE",
   "input": {
     "headers": [],
     "payload": { "jwe": "sample jwe string" }
