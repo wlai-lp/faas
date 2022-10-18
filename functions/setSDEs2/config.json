@@ -1,15 +1,69 @@
 {
-    "name": "setSDEs2",
-    "event": "No Event",
-    "description": "setSDEs2",
-    "input": {
-        "headers": [],
-        "payload": {}
-    },
-    "environmentVariables": [
+  "name": "setSDEs2",
+  "event": "No Event",
+  "description": "setSDEs2",
+  "input": {
+    "headers": [],
+    "payload": {
+      "lp_sdes": [
         {
-            "key": "",
-            "value": ""
+          "type": "personal",
+          "personal": {
+            "firstname": "John",
+            "lastname": "Doe",
+            "age": {
+              "age": 34,
+              "year": 1980,
+              "month": 4,
+              "day": 15
+            },
+            "contacts": [
+              {
+                "email": "myname@example.com",
+                "phone": "+1 212-788-8877",
+                "address": {
+                  "country": "Russia",
+                  "region": "Moscow"
+                }
+              }
+            ],
+            "gender": "MALE",
+            "language": "en-US",
+            "company": "company"
+          }
+        },
+        {
+          "type": "ctmrinfo",
+          "info": {
+            "cstatus": "cancelled",
+            "ctype": "vip3",
+            "customerId": "138766AC",
+            "balance": -400.99,
+            "socialId": "11256324780",
+            "imei": "3543546543545688",
+            "userName": "user000",
+            "companySize": 500,
+            "accountName": "bank corp",
+            "role": "broker",
+            "lastPaymentDate": {
+              "day": 15,
+              "month": 10,
+              "year": 2014
+            },
+            "registrationDate": {
+              "day": 23,
+              "month": 5,
+              "year": 2013
+            }
+          }
         }
-    ]
+      ]
+    }
+  },
+  "environmentVariables": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
 }

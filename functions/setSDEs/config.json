@@ -38,8 +38,8 @@
   },
   "environmentVariables": [
     {
-      "key": "lp-faas-default-app-key",
-      "value": "123"
+      "key": "",
+      "value": ""
     }
   ]
 }
