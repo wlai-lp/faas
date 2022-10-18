@@ -28,6 +28,9 @@ or
 
 ## to invoke a funciton do functions\function name, it going to get index.js and config.json
 
+- terminal in faas folder, 1 level above functions\[function name] folder
+- do lpf invoke [function name] -l (-l for local)
+
 # use settings.json to include parameters
 
 ## TODO example
