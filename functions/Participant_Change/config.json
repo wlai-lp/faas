@@ -1,0 +1,110 @@
+{
+    "name": "Participant_Change",
+    "event": "controllerbot_messaging_participants_change",
+    "description": "Participant change event",
+    "input": {
+        "headers": [],
+        "payload": {
+            "end": {},
+            "mid": {},
+            "ttr": {
+                "newTtr": {
+                    "value": 3600,
+                    "ttrType": "NORMAL"
+                },
+                "oldTtr": {
+                    "value": 3600,
+                    "ttrType": "NORMAL"
+                }
+            },
+            "idle": {
+                "lastConsumerMsgTs": 1675245920518
+            },
+            "start": {
+                "firstConversation": false
+            },
+            "general": {
+                "type": "UPSERT",
+                "convId": "6cb0442c-b3a0-42a9-be55-840fed7a8ead",
+                "startTs": 1675245920288,
+                "dialogId": "6cb0442c-b3a0-42a9-be55-840fed7a8ead",
+                "sessionId": "a9g32UjCQDqwNPeB6HIcJA",
+                "visitorId": "A2NTRkMmY0NDJkYjMzNWEz",
+                "inOffHours": false,
+                "contextType": "SharkContext",
+                "campaignInfo": {
+                    "campaignId": 3244276032,
+                    "engagementId": 3244276132
+                },
+                "effectiveTTR": 1675250992227,
+                "newConvState": "OPEN",
+                "oldConvState": "OPEN",
+                "originatorId": "84668530.4495496232",
+                "backToQueueTs": 1675247392273,
+                "cbotEventType": "YOU_ARE_CONNECTED_TO",
+                "lastMessageTs": 1675247376714,
+                "clientFeatures": [
+                    "PHOTO_SHARING",
+                    "CO_BROWSE",
+                    "QUICK_REPLIES",
+                    "MARKDOWN_HYPERLINKS",
+                    "AUTO_MESSAGES",
+                    "MULTI_DIALOG",
+                    "FILE_SHARING",
+                    "RICH_CONTENT"
+                ],
+                "clientLanguage": "en-US",
+                "lastAgentMsgTs": 1675247376714,
+                "clientIpAddress": "172.22.139.254, 172.16.100.177",
+                "serverTimestamp": 1675247376714,
+                "messagingChannel": "SharkContext",
+                "originatorMetadata": {
+                    "id": "477dcf80-5ca1-5a03-a188-acc66f2ea2d3",
+                    "role": "ASSIGNED_AGENT",
+                    "clientProperties": {
+                        "type": ".ClientProperties",
+                        "ipAddress": "172.22.139.254, 172.16.100.177",
+                        "integrationVersion": "3.0.54"
+                    }
+                },
+                "lastMessageComposer": "ASSIGNED_AGENT"
+            },
+            "routing": {
+                "newSkillId": "3221374432",
+                "oldSkillId": "3221374432"
+            },
+            "participantChange": {
+                "newParticipants": [
+                    {
+                        "id": "ed289af7749b6a1aecf42e728c0ac9db7c5d2dd59e5e514cf0d2b3e493441752",
+                        "role": "CONSUMER"
+                    },
+                    {
+                        "id": "fb9a64e7-8746-588c-bbc3-9eaf9ee6274a",
+                        "role": "CONTROLLER"
+                    },
+                    {
+                        "id": "477dcf80-5ca1-5a03-a188-acc66f2ea2d3",
+                        "role": "ASSIGNED_AGENT"
+                    }
+                ],
+                "oldParticipants": [
+                    {
+                        "id": "ed289af7749b6a1aecf42e728c0ac9db7c5d2dd59e5e514cf0d2b3e493441752",
+                        "role": "CONSUMER"
+                    },
+                    {
+                        "id": "fb9a64e7-8746-588c-bbc3-9eaf9ee6274a",
+                        "role": "CONTROLLER"
+                    }
+                ]
+            }
+        }
+    },
+    "environmentVariables": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}
