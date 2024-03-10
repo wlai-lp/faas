@@ -1,10 +1,25 @@
 # https://github.com/LivePersonInc/faas-cli
 
-# TO create new faas function use `lpf init`
+# Steps
+- `lpf init` // inti project 
+- `lpf login` // login to site
+- `lpf get functions` // get list of functions
+- `lpf pull [faas function name]` // pull function in functions folder, secrets in settings.json
+- NOTE: use LP faas UI to create secret so lpf can download in correct format, this can be used for local dev
+- `lpf invoke [function name] -l` // invoke local instance with -l
+- `lpf push [function name]` // push to account
+- `lpf deploy [fun]tion name` // deploy to account
 
-# snippets are in .vscode/faas-snippets.code-snippets
+# To create new faas function 
+> use `lpf init`
 
-# check lpf is working
+# snippets 
+> They are in .vscode/faas-snippets.code-snippets
+
+## use snippets in vscode
+> in a js file, F1, search `snippet` or `code snippet`
+
+# Check lpf is working
 
 ## use `lpf get functions`
 
@@ -12,13 +27,14 @@
 
 or
 
-## > lpf login -a 90412079 -u wlai@liveperson.com -p P@ssword3!
+> lpf login -a 90412079 -u wlai@liveperson.com -p pwd
 
 # local developmernt
 
 ## install lpf
 
 ## lpf init // init project
+> you need to do this to install snippets
 
 ## cd to functions folder
 

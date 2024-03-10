@@ -1,0 +1,22 @@
+{
+    "name": "command2",
+    "event": "conversational_command",
+    "description": "command2",
+    "input": {
+        "headers": [],
+        "payload": {
+            "arguments": [
+                "arg1",
+                "arg2",
+                "argN"
+            ],
+            "conversationId": "4e34530b-715b-4629-b73f-a63008fff578"
+        }
+    },
+    "environmentVariables": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}
