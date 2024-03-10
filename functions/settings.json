@@ -5,5 +5,5 @@
       "value": ""
     }
   ],
-  "whitelist": ["*.liveperson.com"]
+  "whitelist": ["*.liveperson.com", "*.mockapi.io", "*.liveperson.net"]
 }
