@@ -1,0 +1,97 @@
+function getRandomInt() {
+  return Math.floor(Math.random() * 5);
+}
+
+function lambda(input, callback) {
+
+    const {
+      context: {
+        lpEvent: {
+          metadata: umsMetadata = []
+        } = {}
+      } = {}
+    } = input.payload;
+    const response = {
+      messages: [],
+      context: {
+        metadata: [],
+        action: "CLOSE_CONVERSATION",
+      }
+    }
+    
+    // const response = {
+    //   context: {
+    //     metadata: [],
+    //   },
+    //     messages: []
+    // }
+
+    const socialMetadata = umsMetadata.find(m => m.type === 'SocialMessagingEventData');
+    console.info(JSON.stringify(input.payload), 'payload')
+    // const channel = socialMetadata.channel || 'Private';
+    // Configure the auto-reply for public tweets. This will be sent to all public tweets which match the filtered stream rule (https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/introduction) configured in Houston.
+    /*const myMessages = [
+     `For support, open MetaMask and navigate to "Support" or "Get Help" within the dropdown menu. Don't trust anyone who is sending you a direct message, and DO NOT give your Secret Recovery Phrase to anyone or enter it into any site ever!`,
+     `Don’t trust anyone who sends you a direct message, and NEVER give your Secret Recovery Phrase to anyone or enter it into any site! For support, open MetaMask and navigate to “Support” or “Get Help” within the dropdown menu.`,
+     `To get support, open MetaMask and navigate to “Support” or “Get Help” within the dropdown menu. Do not trust anyone who has sent you a direct message. UNDER NO CIRCUMSTANCES should you ever give your Secret Recovery Phrase to anyone or input it into any site!`,
+     `AT NO TIME should you give your Secret Recovery Phrase to anyone or enter it into any site! Don’t trust someone who is sending you a direct message. For support, open MetaMask and navigate to “Support” or “Get Help” in the dropdown menu.`,
+     `You can find support by opening MetaMask and navigating to “Support” or “Get Help” within the dropdown menu. You should not trust anyone who is sending you a direct message, and you should NEVER give your Secret Recovery Phrase to anyone or input it into any site ever!`
+    ]*/
+    const myMessages = [
+     `Need help? Open MetaMask > Menu > Support. (or https://Support.MetaMask.io) “Start a Conversation” button. \n\nWe never DM. We DO NOT use Gmail or web forms. NEVER share your Secret Recovery Phrase with any site or person. Verify links are legitimate. Scammers often use these tactics.`,
+     `We DO NOT use Gmail or web forms. NEVER share your Secret Recovery Phrase with any site or person. Verify links are legitimate. These are common in scams. \n\nNeed help? Open MetaMask > Menu > Support. Or from the web: https://Support.MetaMask.io/ Then click “Start a Conversation”`,
+     `NEVER share your Secret Recovery Phrase with any site or person. Verify links are legitimate. We DO NOT use Gmail or web forms. \n\nNeed help? Open MetaMask > Menu > Support. Or from the web: https://Support.MetaMask.io/ Then click “Start a Conversation”`,
+     `We never DM and we DO NOT use Gmail or web forms. NEVER share your Secret Recovery Phrase with any site or person. \n\nNeed help? Open MetaMask > Menu > Support. Or from the web: https://Support.MetaMask.io/ - Then click “Start a Conversation”`,
+     `We will never DM you, we DO NOT use Gmail (Scammers often do) NEVER disclose your Secret Recovery Phrase. \n\nTo chat with Support, open MetaMask > Menu > Support - or from the web: https://support.MetaMask.io/ -  Then click “Start a Conversation”`
+    ]
+    const sendTwitterPublicResponse = () => {
+      //if (socialMetadata && socialMetadata.channel === "Public" && !socialMetadata.event.parent) {
+      if (socialMetadata && socialMetadata.channel === "Public") {
+           console.info(JSON.stringify(socialMetadata), 'socialMetadata')
+        const socialMetadataResponse = {
+                      'type': 'SocialMessagingEventData',
+                      'channel':  socialMetadata.channel,//'Private', //socialMetadata.channel,
+                      'replyToId': socialMetadata.replyToId,
+                      'event': {
+                          'parent': {
+                              'attachmentUrl': '',
+                              'timestamp': Date.now(),
+                              'accountName': 'MetaMaskSupport', // your brand name (this is sent to the agent, not the consumer)
+                              'tweetText': 'message', // Max Length 128chars (this text is sent to the agent, not the consumer)
+                              'tweetId': socialMetadata.replyToId,
+                          },
+                          'source': socialMetadata.event.source,
+                          'type': 'Reply', // {DirectMessage | Tweet | Reply | Retweet}, // for Quote use Retweet
+                      },
+                      'conversationState': {
+                          'currentChannel': socialMetadata.channel,
+                          'dmChatId': socialMetadata.conversationState.dmChatId,
+                      }
+        };
+        // Add social metadata to the response
+        response.context.metadata.push(socialMetadataResponse);
+        
+        const structureContentSM = {
+            type: "vertical",
+            elements: [
+              {
+                type: 'text',
+                text: myMessages[getRandomInt()],
+                alt: 'sm-piggyback',
+              }
+            ],
+        }
+        // Add tweet reply text to the response
+        response.context.structuredContent = structureContentSM;
+      } else {
+        const message = 'conversation is not public social';
+        delete response.messages;
+       // response.messages.push(message);
+        console.warn(message);
+      }
+    }
+  
+    sendTwitterPublicResponse();
+  
+    callback(null, response);
+  }
