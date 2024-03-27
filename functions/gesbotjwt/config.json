@@ -1,0 +1,15 @@
+{
+    "name": "gesbotjwt",
+    "event": "No Event",
+    "description": "get jtw for gesbot",
+    "input": {
+        "headers": [],
+        "payload": {}
+    },
+    "environmentVariables": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}
