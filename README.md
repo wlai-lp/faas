@@ -48,7 +48,9 @@ or
 - do `lpf invoke [function name] -l` (-l for local)
 
 # use settings.json to include parameters
-
+- including secrets
+- do not include sensitive data init
+- add sensitive data in settings.json.local for local dev
 ## TODO example
 
 # TO Debug in VSCcode (can't get it working)
